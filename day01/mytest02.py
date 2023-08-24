@@ -6,6 +6,7 @@
 from random import random
 
 com = ""
+result = ""
 rnd = (int)(random()*2)
 
 if rnd%2==0 :
@@ -15,10 +16,11 @@ else :
 
 user = input("홀/짝을 선택하시오")
 
+if user == com :
+    result="이김"
+else :
+    result="짐"
+
 print("나 : "+user)
 print("컴 : "+com)
-
-if user == com :
-    print("결과 : 이김")
-else :
-    print("결과 : 짐")
+print("결과 : "+result)
