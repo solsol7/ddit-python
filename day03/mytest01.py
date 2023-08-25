@@ -7,12 +7,12 @@ from random import random
 comNum = int(random()*99+1)
 
 userNum = ""
-while(userNum!=comNum) :
+while userNum!=comNum :
     userNum = int(input("숫자를 맞춰보세요"))
     
     if userNum > comNum :
-        print(str(userNum)+" down")
+        print(str(userNum)+"\tdown")
     elif userNum < comNum :
-        print(str(userNum)+" up")
+        print(str(userNum)+"\tup")
 
-print(str(userNum)+" 정답입니다.")
+print(str(userNum)+"\t정답입니다.")
