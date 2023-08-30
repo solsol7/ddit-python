@@ -43,7 +43,7 @@ while(sCnt!=3) :
 
 print("정답입니다.")
 
-"""
+""" 선생님답
 def ranCom():
     arr = [1,2,3,4,5,6,7,8,9]
     for i in range(100) :
