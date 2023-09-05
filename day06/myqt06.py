@@ -7,9 +7,6 @@ form_class = uic.loadUiType("./myqt06.ui")[0]
 
 class MainClass(QMainWindow, form_class):
     def __init__(self):
-        global num
-        num = ""
-
         QMainWindow.__init__(self)
         self.setupUi(self)
         self.show()
@@ -29,15 +26,14 @@ class MainClass(QMainWindow, form_class):
         
     def btnClick(self):
         global num
-        sending_button = self.sender()
-        num += sending_button.text()
-        self.le.setText(num)
-
+        str_new = self.sender().text()
+        str_old = self.le.text()
+        self.le.setText(str_old+str_new)
         
         
     def btnCallClick(self):
-        global num
-        QMessageBox.about(self,'calling',num)
+        str_tel = self.le.text()
+        QMessageBox.about(self,'calling',str_tel)
         
 
 if __name__ == "__main__":

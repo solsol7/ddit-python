@@ -23,6 +23,9 @@
       <height>21</height>
      </rect>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
    </widget>
    <widget class="QPushButton" name="pb1">
     <property name="geometry">
@@ -164,7 +167,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>1</string>
+     <string>call</string>
     </property>
    </widget>
   </widget>
