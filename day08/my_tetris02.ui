@@ -17,40 +17,30 @@
    <widget class="QLabel" name="lbl">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>30</y>
-      <width>40</width>
-      <height>40</height>
+      <x>420</x>
+      <y>50</y>
+      <width>56</width>
+      <height>12</height>
      </rect>
     </property>
     <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>0.png</pixmap>
+     <string>남은갯수</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pb">
+   <widget class="QLineEdit" name="le">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>100</y>
-      <width>40</width>
-      <height>40</height>
+      <x>480</x>
+      <y>50</y>
+      <width>113</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string/>
+     <string>3</string>
     </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>0.png</normaloff>0.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>40</width>
-      <height>40</height>
-     </size>
+    <property name="readOnly">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>

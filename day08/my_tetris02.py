@@ -3,6 +3,7 @@ from PyQt5 import uic, QtGui
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel
 from conda.common._logic import TRUE
 from random import random
+from PyQt5.Qt import QMessageBox
 
 
 class Block:
@@ -23,6 +24,7 @@ class MainClass(QMainWindow, form_class):
     def __init__(self) :
         QMainWindow.__init__(self)
         self.setupUi(self)
+        self.flag_over = False
         self.b2D=[
             [0,0,0,0,0, 0,0,0,0,0],
             [0,0,0,0,0, 0,0,0,0,0],
@@ -143,6 +145,9 @@ class MainClass(QMainWindow, form_class):
         self.show2D(self.d2D)
         
     def keyPressEvent(self, e):
+        if self.flag_over :
+            return
+        
         bak_i = self.b.i
         bak_j = self.b.j
         bak_s = self.b.status
@@ -176,40 +181,117 @@ class MainClass(QMainWindow, form_class):
             self.setB2D()
             if flag_down :
                 self.moveSfromB()
-                self.removeRow()
-                self.b.i = 2
-                self.b.j = 5
-                self.b.status = 0
-                self.b.type = int(random()*7+1)
+                
+                flag_stack = False
+                for j in range(10) :
+                    if self.s2D[5][j] != 0 :
+                            flag_stack = True
+                if flag_stack==True : 
+                    QMessageBox.about(self, "TETRIS", "GAME OVER")
+                    self.flag_over == True
+                
+                # self.removeRow()
+                cnt10 = self.get10Count()
+                if cnt10 > 0 :
+                    self.remove10(cnt10)
+                    cnt_total = int(self.le.text())
+                    cnt_total -= cnt10
+                    if cnt_total<=0 :
+                        QMessageBox.about(self, "TETRIS", "YOU WIN")
+                        self.flag_over == True
+                    self.le.setText(str(cnt_total))
+                print("cnt10", cnt10)
+                self.b.i        = 2
+                self.b.j        = 5
+                self.b.status   = 0
+                self.b.type     = int(random()*7)+1
                 self.setB2D()
-    
+                
         self.setD2D()
         self.myrender()
-    
-    
+        
+    def remove10(self, cnt10):
+        #임시
+        imsi = []
+        for s in self.s2D:
+            if(s[0]>0 and
+               s[1]>0 and
+               s[2]>0 and
+               s[3]>0 and
+               s[4]>0 and
+               s[5]>0 and
+               s[6]>0 and
+               s[7]>0 and
+               s[8]>0 and
+               s[9]>0 ) :
+                pass
+            else :
+                imsi.append("{},{},{},{},{},{},{},{},{},{}".format(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9]))
+        
+        for i in range(cnt10) : 
+            imsi.insert(0, "0,0,0,0,0,0,0,0,0,0")
+        
+        print("imsi : ")
+        self.show2D(imsi)
+        self.show2D(self.s2D)
+        
+        for i in range(25) : 
+            ar = imsi[i].split(",")
+            self.s2D[i][0] = int(ar[0])
+            self.s2D[i][1] = int(ar[1])
+            self.s2D[i][2] = int(ar[2])
+            self.s2D[i][3] = int(ar[3])
+            self.s2D[i][4] = int(ar[4])
+            self.s2D[i][5] = int(ar[5])
+            self.s2D[i][6] = int(ar[6])
+            self.s2D[i][7] = int(ar[7])
+            self.s2D[i][8] = int(ar[8])
+            self.s2D[i][9] = int(ar[9])
+                
+        # for i in range(25):
+        #     for j in range(10):
+        #         self.s2D[i][j] = imsi[i][j]
+        
+            
+    def get10Count(self):
+        cnt = 0
+        for s in self.s2D:
+            if(s[0]>0 and
+               s[1]>0 and
+               s[2]>0 and
+               s[3]>0 and
+               s[4]>0 and
+               s[5]>0 and
+               s[6]>0 and
+               s[7]>0 and
+               s[8]>0 and
+               s[9]>0 ) :
+                cnt+=1
+        return cnt
+        
     def removeRow(self):
+        arr = []
         for i in range(25) :
             flag_isFull = True
-            arr = []
             for j in range(10) :
                 if self.d2D[i][j]==0 :
                     flag_isFull =False
             if flag_isFull :
-                self.d2D[i].clear()
-                for j in range(10) :
-                    arr[j] = 0
-                self.d2D.insert(0, arr)
-                
-                    
-                
-
-    
-    
+                arr.append(i)
+        for i in reversed(arr) :
+            self.s2D.pop(i)
+        for i in range(len(arr)) : 
+            pass
+            # newArr = ["0,0,0,0,0,0,0,0,0,0"]
+            # self.d2D.insert(0, newArr)
+     
+        
     def moveSfromB(self):
-        for i in range(25) :
-            for j in range(10) :
-                if self.b2D[i][j]>0 :
-                    self.s2D[i][j]=self.b2D[i][j]
+        for i in range(25):
+            for j in range(10):
+                if self.b2D[i][j]>0:
+                    self.s2D[i][j] = self.b2D[i][j]
+        
         
     def isCrashStack(self):
         for i in range(25):
@@ -401,10 +483,10 @@ class MainClass(QMainWindow, form_class):
                     self.d2D[i][j]=self.b2D[i][j] 
                 if self.s2D[i][j]>0:
                     self.d2D[i][j]=self.s2D[i][j] 
-                    
 
+        
     def show2D(self,arr2d):
-        for i in range(25):
+        for i in range(len(arr2d)):
             print(arr2d[i])
         
         
@@ -412,3 +494,8 @@ if __name__ == "__main__" :
     app = QApplication(sys.argv) 
     window = MainClass() 
     app.exec_()
+    
+    
+   
+                
+                    
