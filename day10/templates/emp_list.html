@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+table{
+	border-collapse: collapse;
+}
+tr,td{
+	border : 1px solid black;
+}
+</style>
+</head>
+<body>
+EMP_LIST<br/>
+<table>
+	<tr>
+		<td>사번</td>
+		<td>이름</td>
+		<td>성별</td>
+		<td>주소</td>
+	</tr>
+	
+	{% for n in empList %}
+		<tr>
+			<td><a href="././emp_detail.py?e_id={{n.e_id}}">{{n.e_id}}</a></td>
+			<td>{{n.e_name}}</td>
+			<td>{{n.gen}}</td>
+			<td>{{n.addr}}</td>
+	  	</tr>
+  	{% endfor %}
+  	
+</table>
+<button id="insert">추가</button>
+</body>
+</html>

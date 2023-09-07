@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+EMP_LIST<br/>
+<table>
+	{% for key, value in empList %}
+		<tr>
+			<td>{{key}}</td>
+			<td>{{value}}</td>
+	  	</tr>
+  	{% endfor %}
+  	
+</table>
+</body>
+</html>
