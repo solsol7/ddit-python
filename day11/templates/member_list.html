@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+function fn_add(){
+	location.href = "member_add";
+}
+</script>
+</head>
+<body>
+MEMBER_LIST<br/>
+<table border="1">
+	<tr>
+		<td>사번</td>
+		<td>이름</td>
+		<td>전화번호</td>
+		<td>이메일</td>
+	</tr>
+	
+	{% for m in mylist %}
+		<tr>
+			<td><a href="member_detail?m_id={{m.m_id}}">{{m.m_id}}</a></td>
+			<td>{{m.m_name}}</td>
+			<td>{{m.tel}}</td>
+			<td>{{m.email}}</td>
+	  	</tr>
+  	{% endfor %}
+  	
+</table>
+<button id="insert" onclick="fn_add()">추가</button>
+</body>
+</html>

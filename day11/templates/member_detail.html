@@ -5,7 +5,7 @@
 <title>Insert title here</title>
 <script>
 function fn_mod(){
-	location.href="emp_mod?e_id={{emp.e_id}}"
+	location.href="member_mod?m_id={{member.m_id}}"
 }
 function fn_del(){
 	document.frm.submit();
@@ -14,25 +14,29 @@ function fn_del(){
 </head>
 <body>
 EMP_LIST<br/>
-<form action="emp_del_act" name="frm" method="post">
-	<input type="hidden" name="e_id" value="{{emp.e_id}}">
+<form action="member_del_act" name="frm" method="post">
+	<input type="hidden" name="m_id" value="{{member.m_id}}">
 </form>
 <table border="1">
 	<tr>
 		<td>사번</td>
-		<td>{{emp.e_id}}</td>
+		<td>{{member.m_id}}</td>
 	</tr>
 	<tr>
 		<td>이름</td>
-		<td>{{emp.e_name}}</td>
+		
+		
+		
+		
+		<td>{{member.m_name}}</td>
 	</tr>
 	<tr>
-		<td>성별</td>
-		<td>{{emp.gen}}</td>
+		<td>전화번호</td>
+		<td>{{member.tel}}</td>
 	</tr>
 	<tr>
-		<td>주소</td>
-		<td>{{emp.addr}}</td>
+		<td>이메일</td>
+		<td>{{member.email}}</td>
 	</tr>
 	<tr>
 		<td colspan="2">

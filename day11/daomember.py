@@ -1,5 +1,5 @@
 import pymysql
-class DaoMem :
+class DaoMember :
     def __init__(self):
         self.conn = pymysql.connect(host='localhost', port=3305, user='root', passwd='python', db='python', charset='utf8')
 
@@ -19,10 +19,10 @@ class DaoMem :
         mylist = self.curs.fetchall()
         return mylist[0]
     
-    def insert(self,m_id,m_name,tel,email):
+    def insert(self,m_name,tel,email):
         sql = f"""
-            insert into member(m_id, m_name, tel, email)
-            values ('{m_id}','{m_name}','{tel}','{email}')
+            insert into member(m_name, tel, email)
+            values ('{m_name}','{tel}','{email}')
         """
         cnt = self.curs.execute(sql)
         self.conn.commit()
@@ -50,6 +50,6 @@ class DaoMem :
         self.conn.close()
     
 if __name__=='__main__':
-    de = DaoMem()
-    cnt = de.delete('1')
+    de = DaoMember()
+    cnt = de.insert('4','4','4')
     print("cnt",cnt)

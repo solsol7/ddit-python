@@ -13,8 +13,9 @@ app = FastAPI()
 @app.get("/", response_class=HTMLResponse)
 @app.get("/emp_list", response_class=HTMLResponse)
 async def emp_list(request: Request):
-    de = DaoEmp()
-    mylist = de.selectList()
+    dm = DaoEmp()
+    mylist = dm.selectList()
+    print(mylist)
     return templates.TemplateResponse("emp_list.html",{"request":request, "mylist":mylist})
 
 
@@ -24,7 +25,6 @@ async def emp_detail(request: Request, e_id:str):
     de = DaoEmp()
     emp = de.selectOne(e_id)
     return templates.TemplateResponse("emp_detail.html",{"request":request, "emp":emp})
-
 
 
 @app.get("/emp_mod", response_class=HTMLResponse)

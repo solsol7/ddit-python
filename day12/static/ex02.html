@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+#it1,#it2,#it3{
+	width : 30px;
+}
+</style>
+<script>
+	function myclick(){
+		num1 = document.getElementById('it1').value
+		num2 = document.getElementById('it2').value
+		num3 = parseInt(num1)+ parseInt(num2)
+		document.getElementById('it3').value = num3
+		
+	}
+</script>
+</head>
+<body>
+<input type="text" id="it1">
++
+<input type="text" id="it2">
+<input type="button" value="=" onclick="myclick()">
+<input type="text" id="it3">
+
+</body>
+</html>
+
+

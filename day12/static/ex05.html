@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+body{
+	text-align: center;
+}
+</style>
+<script>
+
+	function btnClick(){
+		number = document.getElementById('it');
+		number.value += event.target.value
+	}
+	function myclick(){
+		number = document.getElementById('it').value;
+		alert(number+"\ncalling")
+	}
+
+</script>
+</head>
+<body>
+<table border="1">
+	<tr>
+		<td colspan="3">
+			<input type="text" id="it"/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="button" class="btn" value="1" onclick="btnClick()"/>
+		</td>
+		<td>
+			<input type="button" class="btn" value="2" onclick="btnClick()"/>
+		</td>
+		<td>
+			<input type="button" class="btn" value="3" onclick="btnClick()"/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="button" class="btn" value="4" onclick="btnClick()"/>
+		</td>
+		<td>
+			<input type="button" class="btn" value="5" onclick="btnClick()"/>
+		</td>
+		<td>
+			<input type="button" class="btn" value="6" onclick="btnClick()"/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="button" class="btn" value="7" onclick="btnClick()"/>
+		</td>
+		<td>
+			<input type="button" class="btn" value="8" onclick="btnClick()"/>
+		</td>
+		<td>
+			<input type="button" class="btn" value="9" onclick="btnClick()"/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="button" class="btn" value="0" onclick="btnClick()"/>
+		</td>
+		<td colspan="2">
+			<input type="button" id="btn_call" value="CALL" onclick="myclick()"/>
+		</td>
+	</tr>
+</table>
+</body>
+</html>
+
+
