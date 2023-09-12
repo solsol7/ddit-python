@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="jquery-3.7.1.min.js"></script>
 <style>
 	#it_mine,#it_com,#it_result{
 		width : 40px;
@@ -11,7 +12,7 @@
 <script>
 	function myclick(){
 		rnd = parseInt(Math.random()*3)
-		user = document.getElementById('it_mine').value
+		user = $('#it_mine').val()
 		com = ""
 		if(rnd==0){
 			com = "가위"
@@ -29,10 +30,15 @@
 		else{
 		    result = "짐"
 		}
-		document.getElementById('it_com').value = com
-		document.getElementById('it_result').value = result
-		
+		$('#it_com').val(com)
+		$('#it_result').val(result)
 	}
+	$(document).ready(function(){
+		$('#btn').bind("click",function(){
+			myclick();
+
+		})
+	});
 </script>
 </head>
 <body>
@@ -57,7 +63,7 @@
 	</tr>
 	<tr>
 		<td colspan="2">
-			<input type="button" value="게임하기" onclick="myclick()"/>
+			<input type="button" value="게임하기" id="btn"/>
 		</td>
 	</tr>
 </table>

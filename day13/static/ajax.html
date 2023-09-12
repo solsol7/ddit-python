@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery-3.7.1.min.js"></script>
+<script>
+
+	$.ajax({
+		url : '',
+		data : 
+	});
+	
+	function myclick(){
+		$('#mydiv').html('Good Evening');
+		
+	}
+$(document).ready(function(){
+	$('#btn').bind("click",function(){
+		myclick();
+		
+		
+		
+	})
+});
+</script>
+</head>
+<body>
+<div id="mydiv">Good Morning</div>
+<input type="button" value="CLICK" id="btn"/>
+</body>
+</html>

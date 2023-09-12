@@ -7,13 +7,22 @@
 body{
 	text-align: center;
 }
+#it{
+	text-align: right;
+}
 </style>
 <script>
 
+	function btnClick(obj){
+		number = document.getElementById('it');
+		number.value += obj.value
+	}
+/*
 	function btnClick(){
 		number = document.getElementById('it');
 		number.value += event.target.value
 	}
+*/
 	function myclick(){
 		number = document.getElementById('it').value;
 		alert(number+"\ncalling")
@@ -30,40 +39,40 @@ body{
 	</tr>
 	<tr>
 		<td>
-			<input type="button" class="btn" value="1" onclick="btnClick()"/>
+			<input type="button" class="btn" value="1" onclick="btnClick(this)"/>
 		</td>
 		<td>
-			<input type="button" class="btn" value="2" onclick="btnClick()"/>
+			<input type="button" class="btn" value="2" onclick="btnClick(this)"/>
 		</td>
 		<td>
-			<input type="button" class="btn" value="3" onclick="btnClick()"/>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<input type="button" class="btn" value="4" onclick="btnClick()"/>
-		</td>
-		<td>
-			<input type="button" class="btn" value="5" onclick="btnClick()"/>
-		</td>
-		<td>
-			<input type="button" class="btn" value="6" onclick="btnClick()"/>
+			<input type="button" class="btn" value="3" onclick="btnClick(this)"/>
 		</td>
 	</tr>
 	<tr>
 		<td>
-			<input type="button" class="btn" value="7" onclick="btnClick()"/>
+			<input type="button" class="btn" value="4" onclick="btnClick(this)"/>
 		</td>
 		<td>
-			<input type="button" class="btn" value="8" onclick="btnClick()"/>
+			<input type="button" class="btn" value="5" onclick="btnClick(this)"/>
 		</td>
 		<td>
-			<input type="button" class="btn" value="9" onclick="btnClick()"/>
+			<input type="button" class="btn" value="6" onclick="btnClick(this)"/>
 		</td>
 	</tr>
 	<tr>
 		<td>
-			<input type="button" class="btn" value="0" onclick="btnClick()"/>
+			<input type="button" class="btn" value="7" onclick="btnClick(this)"/>
+		</td>
+		<td>
+			<input type="button" class="btn" value="8" onclick="btnClick(this)"/>
+		</td>
+		<td>
+			<input type="button" class="btn" value="9" onclick="btnClick(this)"/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="button" class="btn" value="0" onclick="btnClick(this)"/>
 		</td>
 		<td colspan="2">
 			<input type="button" id="btn_call" value="CALL" onclick="myclick()"/>
