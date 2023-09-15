@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.Qt import QPushButton, QSize, QMessageBox
 
 
-form_class = uic.loadUiType("omok02.ui")[0]
+form_class = uic.loadUiType("omok03_19.ui")[0]
 
 class MainClass(QMainWindow, form_class):
     def __init__(self) :
@@ -13,24 +13,36 @@ class MainClass(QMainWindow, form_class):
         self.flag_wb = True
         self.flag_over = False
         self.arr2D = [
-            [0,0,0,0,0, 0,0,0,0,0],
-            [0,0,0,0,0, 0,0,0,0,0],
-            [0,0,0,0,0, 0,0,0,0,0],
-            [0,0,0,0,0, 0,0,0,0,0],
-            [0,0,0,0,0, 0,0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0,  0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0,  0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0,  0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0,  0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0,  0,0,0,0,0, 0,0,0,0],
             
-            [0,0,0,0,0, 0,0,0,0,0],
-            [0,0,0,0,0, 0,0,0,0,0],
-            [0,0,0,0,0, 0,0,0,0,0],
-            [0,0,0,0,0, 0,0,0,0,0],
-            [0,0,0,0,0, 0,0,0,0,0]
+            [0,0,0,0,0, 0,0,0,0,0,  0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0,  0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0,  0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0,  0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0,  0,0,0,0,0, 0,0,0,0],
+            
+            [0,0,0,0,0, 0,0,0,0,0,  0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0,  0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0,  0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0,  0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0,  0,0,0,0,0, 0,0,0,0],
+            
+            [0,0,0,0,0, 0,0,0,0,0,  0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0,  0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0,  0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0,  0,0,0,0,0, 0,0,0,0]
+
         ]
         self.l2D =[]
 
         
-        for i in range(10):
+        for i in range(19):
             line = []
-            for j in range(10):
+            for j in range(19):
                 lego = QPushButton('', self)
                 lego.setIcon(QtGui.QIcon('0.png'))
                 lego.setToolTip("{},{}".format(i,j))
@@ -46,17 +58,18 @@ class MainClass(QMainWindow, form_class):
         self.myrender()
         
     def myreset(self):
-        for i in range(10) :
-            for j in range(10):
+        for i in range(19):
+            for j in range(19):
                 self.arr2D[i][j]=0
         self.myrender()
-        self.flag_wb = True
-        self.flag_over = False
-    
+        self.flag_over= False
+        self.flag_wb= True
+        
+        
         
     def myrender(self):
-        for i in range(10):
-            for j in range(10):
+        for i in range(19):
+            for j in range(19):
                 if self.arr2D[i][j] == 0 :
                     self.l2D[i][j].setIcon(QtGui.QIcon('0.png'))
                 if self.arr2D[i][j] == 1 :
@@ -65,7 +78,7 @@ class MainClass(QMainWindow, form_class):
                     self.l2D[i][j].setIcon(QtGui.QIcon('2.png'))
 
     def myclick(self):  
-        if self.flag_over :
+        if self.flag_over:
             return
         
         str_ij = self.sender().toolTip()
@@ -100,7 +113,11 @@ class MainClass(QMainWindow, form_class):
         d4 = ur + dl + 1
         
         if d1 == 5 or d2 == 5 or d3 == 5 or d4 == 5 :
-            QMessageBox.about(self,'Calling',"Game Over")
+            if self.flag_wb :
+                message = "백돌 승리"
+            else :
+                message = "흑돌 승리"
+            QMessageBox.about(self,'Calling', message)
             self.flag_over = True
         
             
